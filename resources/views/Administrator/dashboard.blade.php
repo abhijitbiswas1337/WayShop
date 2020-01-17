@@ -3,6 +3,16 @@
 Dashboard
 @endsection
 @section('content')
+    <script src="{{asset('/Assets/Admin/assets/js/app.min.js')}}"></script>
+    <script src="{{asset('/Assets/Admin/assets/bundles/jquery.sparkline.min.js')}}"></script>
+    <script src="{{asset('/Assets/Admin/assets/bundles/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('/Assets/Admin/assets/bundles/amcharts4/core.js')}}"></script>
+    <script src="{{asset('/Assets/Admin/assets/bundles/amcharts4/charts.js')}}"></script>
+    <script src="{{asset('/Assets/Admin/assets/bundles/amcharts4/animated.js')}}"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="{{asset('/Assets/Admin/assets/js/page/index.js')}}"></script>
+
     <div class="main-content">
         <section class="section">
             <ul class="breadcrumb breadcrumb-style ">

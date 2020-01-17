@@ -28,16 +28,24 @@
 <!-- General JS Scripts -->
 <script src="{{asset('/Assets/Admin/assets/js/app.min.js')}}"></script>
 <!-- JS Libraies -->
-<script src="{{asset('/Assets/Admin/assets/bundles/apexcharts/apexcharts.min.js')}}"></script>
-<script src="{{asset('/Assets/Admin/assets/bundles/amcharts4/core.js')}}"></script>
-<script src="{{asset('/Assets/Admin/assets/bundles/amcharts4/charts.js')}}"></script>
-<script src="{{asset('/Assets/Admin/assets/bundles/amcharts4/animated.js')}}"></script>
-<script src="{{asset('/Assets/Admin/assets/bundles/jquery.sparkline.min.js')}}"></script>
-<!-- Page Specific JS File -->
-<script src="{{asset('/Assets/Admin/assets/js/page/index.js')}}"></script>
+
+
 <!-- Template JS File -->
 <script src="{{asset('/Assets/Admin/assets/js/scripts.js')}}"></script>
 <!-- Custom JS File -->
 <script src="{{asset('/Assets/Admin/assets/js/custom.js')}}"></script>
+<script src='https://cdn.tiny.cloud/1/uc3s03ozbmzokmovjddmmc0neil7v0b6374mveta4zszxesl/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#description',
+        height:'400px',
+        plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinydrive tinymcespellchecker',
+        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen table',
+        toolbar_drawer: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>
+
 </body>
 </html>

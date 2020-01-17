@@ -17,14 +17,13 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown active">
-                <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                <a href="{{route('admin-dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="briefcase"></i><span>Widgets</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i class="fab fa-product-hunt"></i></i><span>Products</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.html">Chart Widgets</a></li>
-                    <li><a class="nav-link" href="widget-data.html">Data Widgets</a></li>
+                    <li><a class="nav-link" href="widget-chart.html">View Products</a></li>
+                    <li><a class="nav-link" href="{{route('Store_add_form_data')}}">Add Products</a></li>
                 </ul>
             </li>
             <li class="dropdown">

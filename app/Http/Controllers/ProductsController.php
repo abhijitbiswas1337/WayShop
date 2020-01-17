@@ -32,13 +32,13 @@ class ProductsController extends Controller
          if ($file = $request->file('image')) {
                 $imageName = $file->getClientOriginalExtension();
                 $filename = rand(111, 99999) . '.' . $imageName;
-                $img_path = public_path() . '/Assets/uploads/products/' . $filename;
+                $img_path = public_path() . '/Assets/Admin/uploads/products/' . $filename;
                 Image::make($file)->resize(500, 500)->save($img_path);
-                $product->product_picture = $filename;
+                $product->image = $filename;
         }
           $product->save();
         Alert::alert('Product','Successfully Add', 'success');
-        return view('Administrator.Products.add_products');
+        return redirect()->route('Administrator.Products.add_product_form');
     }
 
 }
