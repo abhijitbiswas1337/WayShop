@@ -29,14 +29,12 @@ class ProductsController extends Controller
         }
         $product->price = $data['price'];
 
-        if ($file=$request->file('image')){
-             echo $img_tmp=Input::file('image');
-             $extension=$img_tmp->getClientOriginalExtension();
-             $file_name=rand(111,9999).'.'.$extension;
-             $img_path=public_path().'Assets/Admin/uploads/products'.$file_name;
-
-             Image::make($img_tmp)->resize(500,500)->save($img_path);
-             $product->image=$file_name;
+         if ($file = $request->file('image')) {
+                $imageName = $file->getClientOriginalExtension();
+                $filename = rand(111, 99999) . '.' . $imageName;
+                $img_path = public_path() . '/Assets/uploads/products/' . $filename;
+                Image::make($file)->resize(500, 500)->save($img_path);
+                $product->product_picture = $filename;
         }
           $product->save();
         Alert::alert('Product','Successfully Add', 'success');
