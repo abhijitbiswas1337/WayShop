@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'], function (){
-/**Admin Login Route**/
+/**Admin Login Route For Admin Dashboard**/
 Route::match(['get','post'],'/dashboard','AdminController@dashboard')->name('admin-dashboard');
 
                             /**Admin Login Route**/
