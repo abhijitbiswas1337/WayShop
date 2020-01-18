@@ -20,9 +20,17 @@
                 <a href="{{route('admin-dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i class="fab fa-product-hunt"></i></i><span>Products</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i></i><span>Categories</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.html">View Products</a></li>
+                    <li><a class="nav-link" href="{{route('ViewCategoryFrom')}}">View Categories</a></li>
+                    <li><a class="nav-link" href="{{route('AddCategoryFrom')}}">Add Categories</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i></i><span>Products</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{route('ViewProducts')}}">View Products</a></li>
                     <li><a class="nav-link" href="{{route('Store_add_form_data')}}">Add Products</a></li>
                 </ul>
             </li>

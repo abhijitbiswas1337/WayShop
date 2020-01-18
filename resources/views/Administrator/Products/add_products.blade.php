@@ -5,15 +5,15 @@
 @section('content')
   <div class="main-content">
     <section class="section">
-      <ul class="breadcrumb breadcrumb-style ">
-        <li class="breadcrumb-item">
-          <h4 class="page-title m-b-0">Add Products</h4> </li>
-        <li class="breadcrumb-item">
-          <a href="{{route('admin-dashboard')}}"> <i class="fas fa-home"></i></a>
-        </li>
-        <li class="breadcrumb-item">Products</li>
-        <li class="breadcrumb-item">Add Product</li>
-      </ul>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-primary text-white-all">
+                <li class="breadcrumb-item"><a href="{{route('admin-dashboard')}}"><i class="fas fa-tachometer-alt"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="#"><i class="far fa-file"></i> Products</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-list"></i>Add Product</li>
+            </ol>
+        </nav>
+
       <div class="section-body">
         <div class="row">
           <div class="col-12 col-md-12 col-lg-12 ">
@@ -21,7 +21,13 @@
               <form class="needs-validation" novalidate="" method="post" action="{{route('Store_add_form_data')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-header">
-                  <h4>JavaScript Validation</h4> </div>
+                  <h4>Product</h4> </div>
+                  <div class="form-group  col-lg-12">
+                      <label>Category</label>
+                      <select class="form-control select2" name="category_id">
+                          <?php echo $categories_dropdown;?>
+                      </select>
+                  </div>
                 <div class="card-body">
                   <div class="form-group">
                     <label>Product Name</label>
@@ -53,12 +59,12 @@
                   </div>
                   <div class="form-group">
                     <label>Product Image</label>
-                    <input type="file" class="form-control" name="image" id="image">
+                    <input type="file" class="form-control" name="image" id="image" multiple>
                   </div>
 
 
                 </div>
-                <div class="card-footer text-right">
+                <div class="card-footer text-left">
                   <button type="submit" class="btn btn-primary">Add Product</button>
                 </div>
               </form>
