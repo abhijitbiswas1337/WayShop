@@ -7,22 +7,22 @@ use App\Products;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
-use Symfony\Component\Console\Input\Input;
+
 
 class ProductsController extends Controller
 {
     public function getProductForm()
     {
-        $categories=Category::where(['parent_id'=>0])->get();
-        $categories_dropdown="<option value='' selected disabled>select</option>";
-        foreach ($categories as $category_details){
-            $categories_dropdown.="<option value='".$category_details->id."'>".$category_details->name."</option>";
-            $sub_categories=Category::where(['parent_id'=>$category_details->id])->get();
-            foreach ($sub_categories as$sub_cat){
-                $categories_dropdown.="<option value='".$sub_cat->id."'>&nbsp;--&nbsp;".$sub_cat->name."</option>";
+        $categories = Category::where(['parent_id' => 0])->get();
+        $categories_dropdown = "<option value='' selected disabled>select</option>";
+        foreach ($categories as $category_details) {
+            $categories_dropdown .= "<option value='" . $category_details->id . "'>" . $category_details->name . "</option>";
+            $sub_categories = Category::where(['parent_id' => $category_details->id])->get();
+            foreach ($sub_categories as $sub_cat) {
+                $categories_dropdown .= "<option value='" . $sub_cat->id . "'>$category_details->name&nbsp;<strong>></strong>&nbsp;" . $sub_cat->name . "</option>";
             }
         }
-        return view('Administrator.Products.add_products',['categories_dropdown'=>$categories_dropdown]);
+        return view('Administrator.Products.add_products', ['categories_dropdown' => $categories_dropdown]);
     }
 
     public function storeProductFormData(Request $request)
@@ -39,6 +39,7 @@ class ProductsController extends Controller
             $product->description = '';
         }
         $product->price = $data['price'];
+        $product->status = 1;
 
         if ($file = $request->file('image')) {
             $imageName = $file->getClientOriginalExtension();
@@ -49,9 +50,6 @@ class ProductsController extends Controller
         }
         $product->save();
         Alert::alert('Product', 'Successfully Add', 'success');
-
-
-
         return redirect()->route('add_product_form');
     }
 
@@ -64,27 +62,45 @@ class ProductsController extends Controller
     public function editProduct($id)
     {
         $products = Products::find($id);
-
-        return view('Administrator.Products.edit_product', ['products' => $products]);
+        $categories = Category::where(['parent_id' => 0])->get();
+        $categories_dropdown = "<option value='' selected disabled>select</option>";
+        foreach ($categories as $cat) {
+            if ($cat->id == $products->category_id) {
+                $selected = "selected";
+            } else {
+                $selected = "";
+            }
+            $categories_dropdown .= "<option value='" . $cat->id . "' " . $selected . ">" . $cat->name . "</option>";
+        }
+        $sub_categories = Category::where(['parent_id' => $cat->id])->get();
+        foreach ($sub_categories as $sub_cat) {
+            if ($sub_cat->id == $products->category_id) {
+                $selected = "selected";
+            } else {
+                $selected = "";
+            }
+            $categories_dropdown .= "<option value='" . $sub_cat->id . "'" . $selected . ">$cat->name&nbsp;<b>></b>&nbsp;" . $sub_cat->name . "</option>";
+        }
+        return view('Administrator.Products.edit_product', ['products' => $products, 'categories_dropdown' => $categories_dropdown]);
     }
 
     public function StoreeditProduct(Request $request)
     {
         $products = Products::find($request->product_id);
         if ($file = $request->file('image')) {
-
             $imageName = $file->getClientOriginalExtension();
             $filename = rand(111, 99999) . '.' . $imageName;
             $img_path = public_path() . '/Assets/Admin/uploads/products/' . $filename;
             Image::make($file)->resize(500, 500)->save($img_path);
             $products->image = $filename;
         }
-
+        $products->category_id = $request->category_id;
         $products->name = $request->name;
         $products->code = $request->code;
         $products->color = $request->color;
         $products->description = $request->description;
         $products->price = $request->price;
+        $products->status = 1;
 
         $products->save();
         Alert::alert('Product', 'Successfully Update', 'success');
@@ -100,5 +116,20 @@ class ProductsController extends Controller
 
     }
 
-
+    public function StatusDeactivate($id)
+    {
+        $products = Products::find($id);
+        $products->status = 0;
+        $products->save();
+        Alert::alert('Product', 'Status Update', 'success');
+        return redirect()->route('ViewProducts');
+    }
+    public function StatusActivate($id)
+    {
+        $products = Products::find($id);
+        $products->status = 1;
+        $products->save();
+        Alert::alert('Product', 'Status Update', 'success');
+        return redirect()->route('ViewProducts');
+    }
 }

@@ -61,8 +61,6 @@
                     <label>Product Image</label>
                     <input type="file" class="form-control" name="image" id="image" multiple>
                   </div>
-
-
                 </div>
                 <div class="card-footer text-left">
                   <button type="submit" class="btn btn-primary">Add Product</button>

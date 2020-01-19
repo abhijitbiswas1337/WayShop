@@ -52,7 +52,15 @@
                                                     @endif
                                                 </td>
                                                 <td>{{$productsdetails->price}}</td>
-                                                <td><div class="badge badge-success badge-shadow">Completed</div></td>
+                                                <td>
+                                                    @if ($productsdetails->status ==1)
+                                                        <div class="badge badge-success badge-shadow status"><a href="{{route('StatusDeactivate',['id'=>$productsdetails->id])}}" data-toggle="tooltip" data-placement="top" title=""
+                                                                                                          data-original-title="Not Active">Active</a></div>
+                                                        @else
+                                                            <div class="badge badge-danger badge-shadow"><a href="{{route('StatusActivate',['id'=>$productsdetails->id])}}" data-toggle="tooltip" data-placement="top" title=""
+                                                                                                            data-original-title="Active">NotActive</a></div>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <div class="dropdown d-inline">
                                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

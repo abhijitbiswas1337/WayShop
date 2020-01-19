@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="{{asset('/Assets/Admin/assets/bundles/select2/dist/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('/Assets/Admin/assets/bundles/jquery-selectric/selectric.css')}}">
     <link rel="stylesheet" href="{{asset('/Assets/Admin/assets/bundles/pretty-checkbox/pretty-checkbox.min.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{asset('/Assets/Admin/assets/js/app.min.js')}}"></script>
+
+
 
 </head>
 <body>
@@ -32,7 +36,7 @@
     </div>
 </div>
 <!-- General JS Scripts -->
-<script src="{{asset('/Assets/Admin/assets/js/app.min.js')}}"></script>
+
 {{--<script src="{{asset('/Assets/Admin/assets/js/page/forms-advanced-forms.js')}}"></script>--}}
 <!-- JS Libraies -->
 

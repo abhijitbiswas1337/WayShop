@@ -21,6 +21,13 @@ Edit Products
                                 @csrf
                                 <div class="card-header">
                                     <h4>Update Product</h4> </div>
+                                <div class="form-group  col-lg-12">
+                                    <label>Category</label>
+                                    <select class="form-control select2" name="category_id">
+                                        <?php echo $categories_dropdown;?>
+                                    </select>
+                                </div>
+
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Product Name</label>

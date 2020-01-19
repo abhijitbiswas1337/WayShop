@@ -31,6 +31,8 @@ Route::get('/viewProducts',['uses'=>'ProductsController@viewProducts','as'=>'Vie
 Route::get('/editProduct/{id}',['uses'=>'ProductsController@editProduct','as'=>'EditProduct']);
 Route::post('/update-product',['uses'=>'ProductsController@StoreeditProduct','as'=>'StoreeditProduct']);
 Route::get('/Delete-Product/{id}',['uses'=>'ProductsController@productDelete','as'=>'ProductDelete']);
+Route::get('/status_deactivate//{id}',['uses'=>'ProductsController@StatusDeactivate','as'=>'StatusDeactivate']);
+Route::get('/status_activate//{id}',['uses'=>'ProductsController@StatusActivate','as'=>'StatusActivate']);
 
 
 

@@ -3,6 +3,7 @@
 Dashboard
 @endsection
 @section('content')
+
     <script src="{{asset('/Assets/Admin/assets/js/app.min.js')}}"></script>
     <script src="{{asset('/Assets/Admin/assets/bundles/jquery.sparkline.min.js')}}"></script>
     <script src="{{asset('/Assets/Admin/assets/bundles/apexcharts/apexcharts.min.js')}}"></script>
