@@ -4,6 +4,8 @@
 @endsection
 @section('content')
     <div class="main-content">
+         <div class="message-success" style="display:none" class="alert alert-success"></div>
+         <div class="message-error" style="display:none" class="alert alert-danger"></div>
         <section class="section">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-primary text-white-all">
@@ -53,14 +55,19 @@
                                                 </td>
                                                 <td>{{$productsdetails->price}}</td>
                                                 <td>
-                                                    @if ($productsdetails->status ==1)
+                                                    {{-- @if ($productsdetails->status ==1)
                                                         <div class="badge badge-success badge-shadow status"><a href="{{route('StatusDeactivate',['id'=>$productsdetails->id])}}" data-toggle="tooltip" data-placement="top" title=""
                                                                                                           data-original-title="Not Active">Active</a></div>
                                                         @else
                                                             <div class="badge badge-danger badge-shadow"><a href="{{route('StatusActivate',['id'=>$productsdetails->id])}}" data-toggle="tooltip" data-placement="top" title=""
                                                                                                             data-original-title="Active">NotActive</a></div>
-                                                    @endif
+                                                    @endif --}}
+
+                                                    <input type="checkbox" class="ProductStatus btn btn-success" rel="{{$productsdetails->id}}" data-toggle="toggle" data-on="Active" data-off="Deactivate"
+                                                     data-onstyle="success" data-offstyle="danger" @if ($productsdetails['status']==1) checked @endif>
+                                                     <div class="myElem" style="display:none" class="alert alert-success"></div>
                                                 </td>
+
                                                 <td>
                                                     <div class="dropdown d-inline">
                                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

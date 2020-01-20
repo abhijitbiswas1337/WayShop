@@ -1,5 +1,5 @@
-
 /*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY3VzdG9tLmNzcyIsInNvdXJjZXMiOlsiY3VzdG9tLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiJ9 */
+
 
 /*# sourceMappingURL=custom.css.map */
 
@@ -9,4 +9,8 @@ i.fas.fa-window-close {
 
 i.far.fa-edit {
     color: #54ca68;
+}
+
+span.toggle-handle.btn.btn-default {
+    background: #6777ef;
 }

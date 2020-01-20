@@ -22,6 +22,10 @@ Route::match(['get','post'],'/dashboard','AdminController@dashboard')->name('adm
     Route::get('/add_category',['uses'=>'categoryController@AddCategoryFrom','as'=>'AddCategoryFrom']);
     Route::post('/add_category',['uses'=>'categoryController@storeCategoryFromData','as'=>'storeCategoryFromData']);
     Route::get('/view_category',['uses'=>'categoryController@ViewCategoryFrom','as'=>'ViewCategoryFrom']);
+    Route::get('/edit_category/{id}',['uses'=>'categoryController@EditCategory','as'=>'EditCategory']);
+    Route::get('/delete_category/{id}',['uses'=>'categoryController@DeleteCategory','as'=>'CategoryDelete']);
+
+
 
 
                             /**Products  Route**/
@@ -31,8 +35,11 @@ Route::get('/viewProducts',['uses'=>'ProductsController@viewProducts','as'=>'Vie
 Route::get('/editProduct/{id}',['uses'=>'ProductsController@editProduct','as'=>'EditProduct']);
 Route::post('/update-product',['uses'=>'ProductsController@StoreeditProduct','as'=>'StoreeditProduct']);
 Route::get('/Delete-Product/{id}',['uses'=>'ProductsController@productDelete','as'=>'ProductDelete']);
-Route::get('/status_deactivate//{id}',['uses'=>'ProductsController@StatusDeactivate','as'=>'StatusDeactivate']);
-Route::get('/status_activate//{id}',['uses'=>'ProductsController@StatusActivate','as'=>'StatusActivate']);
+// Route::get('/status_deactivate//{id}',['uses'=>'ProductsController@StatusDeactivate','as'=>'StatusDeactivate']);
+// Route::get('/status_activate//{id}',['uses'=>'ProductsController@StatusActivate','as'=>'StatusActivate']);
+Route::post('/update-product-status', ['uses'=>'ProductsController@UpdateStatus']);
+
+
 
 
 

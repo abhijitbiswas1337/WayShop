@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 
-
 class ProductsController extends Controller
 {
     public function getProductForm()
@@ -116,20 +115,28 @@ class ProductsController extends Controller
 
     }
 
-    public function StatusDeactivate($id)
+    // public function StatusDeactivate($id)
+    // {
+    //     $products = Products::find($id);
+    //     $products->status = 0;
+    //     $products->save();
+    //     Alert::alert('Product', 'Status Update', 'success');
+    //     return redirect()->route('ViewProducts');
+    // }
+    // public function StatusActivate($id)
+    // {
+    //     $products = Products::find($id);
+    //     $products->status = 1;
+    //     $products->save();
+    //     Alert::alert('Product', 'Status Update', 'success');
+    //     return redirect()->route('ViewProducts');
+    // }
+
+    public function UpdateStatus(Request $request, $id = null)
     {
-        $products = Products::find($id);
-        $products->status = 0;
-        $products->save();
-        Alert::alert('Product', 'Status Update', 'success');
-        return redirect()->route('ViewProducts');
+        $data = $request->all();
+        Products::Where('id', $data['id'])->update(['status' => $data['status']]);
+
     }
-    public function StatusActivate($id)
-    {
-        $products = Products::find($id);
-        $products->status = 1;
-        $products->save();
-        Alert::alert('Product', 'Status Update', 'success');
-        return redirect()->route('ViewProducts');
-    }
+
 }

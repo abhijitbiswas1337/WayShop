@@ -28,10 +28,22 @@ class CategoryController extends Controller
          else{
              $category->status=0;
          }
-
         $category->save();
         Alert::alert('Category', 'Successfully Created', 'success');
         return redirect()->route('storeCategoryFromData');
     }
+        public function ViewCategoryFrom(){
+        $categories=Category::get();
+
+            return view('Administrator.Category.view_category',['categories'=>$categories]);
+
+        }
+  public function EditCategory($id){
+//    $category =Category::find($id);
+//     return view('Administrator.Category.Edit-Category',['category'=> $category]);
+
+  }
+
+
 
 }

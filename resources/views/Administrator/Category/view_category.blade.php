@@ -17,7 +17,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Products</h4>
+                                <h4>Categories</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -25,11 +25,11 @@
                                         <thead>
                                         <tr>
                                             <th class="text-center">#</th>
-                                            <th>Product Name</th>
+                                            <th>ID</th>
+                                            <th>Category Name</th>
+                                            <th>Parent id</th>
                                             <th>Product Code</th>
-                                            <th>Product Color</th>
-                                            <th>Image</th>
-                                            <th>Price</th>
+                                            <th>URL</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -38,13 +38,19 @@
                                         @php
                                             $sr=1;
                                         @endphp
-                                        @foreach($products as $productsdetails)
+                                        @foreach($categories as $categoriesDetails)
                                             <tr>
                                                 <td>{{$sr++}}</td>
-                                                <td>{{$productsdetails->name}}</td>
-                                                <td>{{$productsdetails->code}}</td>
-                                                <td>{{$productsdetails->color}}</td>
-                                                <td>{{$productsdetails->price}}</td>
+                                                <td>{{$categoriesDetails->id}}</td>
+                                                <td>{{$categoriesDetails->name}}</td>
+                                                <td>
+                                                    @if ($categoriesDetails->parent_id >0)
+                                                         {{ $categoriesDetails->parent_id}}
+
+                                                    @endif
+                                                </td>
+                                                <td>{{$categoriesDetails->code}}</td>
+                                                <td>{{$categoriesDetails->url}}</td>
                                                 <td><div class="badge badge-success badge-shadow">Active</div></td>
                                                 <td>
                                                     <div class="dropdown d-inline">
@@ -52,8 +58,8 @@
                                                             Actions
                                                         </button>
                                                         <div class="dropdown-menu" style="will-change: transform;">
-                                                            <a class="dropdown-item has-icon" href="{{route('EditProduct',['id'=>$productsdetails->id])}}"><i class="far fa-edit"></i>Edit</a>
-                                                            <a class="dropdown-item has-icon" href="{{route('ProductDelete',['id'=>$productsdetails->id])}}"><i class="fas fa-window-close"></i> Delete</a>
+                                                            <a class="dropdown-item has-icon" href="{{route('EditCategory',['id'=>$categoriesDetails->id])}}"><i class="far fa-edit"></i>Edit</a>
+                                                            <a class="dropdown-item has-icon" href="{{route('CategoryDelete',['id'=>$categoriesDetails->id])}}"><i class="fas fa-window-close"></i> Delete</a>
                                                         </div>
                                                     </div>
                                                 </td>

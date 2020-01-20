@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>WayShop @yield('title')</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{asset('/Assets/Admin/assets/css/app.min.css')}}">
@@ -16,8 +17,12 @@
     <link rel="stylesheet" href="{{asset('/Assets/Admin/assets/bundles/select2/dist/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('/Assets/Admin/assets/bundles/jquery-selectric/selectric.css')}}">
     <link rel="stylesheet" href="{{asset('/Assets/Admin/assets/bundles/pretty-checkbox/pretty-checkbox.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{asset('/Assets/Admin/assets/js/app.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
 
