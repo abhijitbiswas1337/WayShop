@@ -23,6 +23,7 @@ Route::match(['get','post'],'/dashboard','AdminController@dashboard')->name('adm
     Route::post('/add_category',['uses'=>'categoryController@storeCategoryFromData','as'=>'storeCategoryFromData']);
     Route::get('/view_category',['uses'=>'categoryController@ViewCategoryFrom','as'=>'ViewCategoryFrom']);
     Route::get('/edit_category/{id}',['uses'=>'categoryController@EditCategory','as'=>'EditCategory']);
+        Route::post('/edit_category',['uses'=>'categoryController@EditCategoryUpdate','as'=>'EditCategoryUpdate']);
     Route::get('/delete_category/{id}',['uses'=>'categoryController@DeleteCategory','as'=>'CategoryDelete']);
 
 

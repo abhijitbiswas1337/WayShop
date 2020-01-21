@@ -39,11 +39,31 @@ class CategoryController extends Controller
 
         }
   public function EditCategory($id){
-//    $category =Category::find($id);
-//     return view('Administrator.Category.Edit-Category',['category'=> $category]);
+   $category = Category::find($id);
+   $levels= Category::where(['parent_id'=>0])->get();
+   $categoryDetails = Category::where(['id'=>$id])->first();
+    return view('Administrator.Category.Edit-Category',['category'=> $category,'categoryDetails'=>$categoryDetails,'levels'=>$levels]);
 
   }
 
+  public function EditCategoryUpdate(Request $request){
 
+        $category = Category::find($request->cat_id);
+        $category->name=$request->name;
+        $category->parent_id=$request->parent_id;
+        $category->url=$request->url;
+        $category->description=$request->description;
+
+        if (!empty($request->status)){
+            $category->status=$request->status;
+        }
+         else{
+             $category->status=0;
+         }
+        $category->save();
+        Alert::alert('Category', 'Successfully Created', 'success');
+        return redirect()->route('storeCategoryFromData');
+
+  }
 
 }

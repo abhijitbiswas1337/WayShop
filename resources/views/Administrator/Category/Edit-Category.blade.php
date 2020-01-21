@@ -18,10 +18,10 @@ Edit Category
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 ">
                         <div class="card">
-                            <form class="needs-validation" novalidate="" method="post" action="{{route('storeCategoryFromData')}}">
+                            <form class="needs-validation" novalidate="" method="post" action="{{route('EditCategoryUpdate')}}">
                                 @csrf
                                 <div class="card-header">
-                                    <h4>Category</h4> </div>
+                                    <h4>Category Update</h4> </div>
 
                                 <div class="card-body">
                                     <div class="form-group">
@@ -34,10 +34,11 @@ Edit Category
                                         <label>Parent Category</label>
                                         <select class="form-control select2" name="parent_id">
                                             <option value="0">Parent Category</option>
-                                            @foreach($cate as $parent_category)
-                                            <option value="{{$parent_category->id}}">{{$parent_category->name}}</option>
-                                           @endforeach
+                                                @foreach($levels as $parent_category)
+                                              <option value="{{$parent_category->id}}" @if($parent_category->id==$categoryDetails->parent_id)selected @endif >{{$parent_category->name}}</option>
+                                                @endforeach
                                         </select>
+                                         <input type="hidden" name="cate_id" value="{{$category->id}}">
                                     </div>
                                     <div class="form-group">
                                         <label>Category URL</label>
@@ -54,7 +55,8 @@ Edit Category
                                 <div class="card-body">
                                     <div class="section-title">Status</div>
                                     <div class="pretty p-icon p-smooth">
-                                        <input type="checkbox" name="status" value="1">
+                                        <input type="checkbox" name="status" {{ ($category->status=="1")? "checked" : "" }}>
+
                                         <div class="state p-success">
                                             <i class="icon material-icons">done</i>
                                             <label>Active</label>
